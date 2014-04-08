@@ -36,5 +36,29 @@ _.each(attributeMethods, function(method) {
     };
 });
 
+// Return models with matching attributes. Useful for simple cases of
+// `filter`.
+mixins.where = function(attrs, first) {
+    if (_.isEmpty(attrs)) return first ? void 0 : [];
+    return this[first ? 'find' : 'filter'](function(model) {
+        var value;
+        for (var key in attrs) {
+            value = model.get ? model.get(key) : model[key];
+            if (attrs[key] !== value) return false;
+        }
+        return true;
+    });
+};
+
+// Return the first model with matching attributes. Useful for simple cases
+// of `find`.
+mixins.findWhere = function(attrs) {
+    return this.where(attrs, true);
+};
+
+// Plucks an attribute from each model in the collection.
+mixins.pluck = function(attr) {
+    return _.invoke(this.models, 'get', attr);
+};
 
 module.exports = mixins;
