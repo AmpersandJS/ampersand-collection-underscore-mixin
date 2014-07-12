@@ -10,7 +10,11 @@
     "underscore": "^1.6.0"
   },
   "devDependencies": {
-    "ampersand-collection": "^1.0.0"
+    "ampersand-collection": "^1.0.0",
+    "ampersand-state": "^4.3.2",
+    "precommit-hook": "~0.3.10",
+    "run-browser": "~1.2.0",
+    "tape": "~2.12.1"
   },
   "homepage": "https://github.com/ampersandjs/ampersand-collection-underscore-mixin",
   "keywords": [
@@ -23,5 +27,26 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/ampersandjs/ampersand-collection-underscore-mixin"
+  },
+  "scripts": {
+    "test": "node test/index.js",
+    "validate": "jshint .",
+    "start": "run-browser test/index.js"
+  },
+  "testling": {
+    "files": "test/*.js",
+    "browsers": [
+      "ie/9..latest",
+      "firefox/17..latest",
+      "firefox/nightly",
+      "chrome/22..latest",
+      "chrome/canary",
+      "opera/12..latest",
+      "opera/next",
+      "safari/5.1..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
+    ]
   }
 }
