@@ -13,9 +13,9 @@ var methods = ['forEach', 'each', 'map', 'collect', 'reduce', 'foldl',
 ];
 
 // Mix in each Underscore method as a proxy to `Collection#models`.
-_.each(methods, function(method) {
+_.each(methods, function (method) {
     if (!_[method]) return;
-    mixins[method] = function() {
+    mixins[method] = function () {
         var args = slice.call(arguments);
         args.unshift(this.models);
         return _[method].apply(_, args);
@@ -26,10 +26,10 @@ _.each(methods, function(method) {
 var attributeMethods = ['groupBy', 'countBy', 'sortBy', 'indexBy'];
 
 // Use attributes instead of properties.
-_.each(attributeMethods, function(method) {
+_.each(attributeMethods, function (method) {
     if (!_[method]) return;
-    mixins[method] = function(value, context) {
-        var iterator = _.isFunction(value) ? value : function(model) {
+    mixins[method] = function (value, context) {
+        var iterator = _.isFunction(value) ? value : function (model) {
             return model.get ? model.get(value) : model[value];
         };
         return _[method](this.models, iterator, context);
@@ -38,9 +38,9 @@ _.each(attributeMethods, function(method) {
 
 // Return models with matching attributes. Useful for simple cases of
 // `filter`.
-mixins.where = function(attrs, first) {
+mixins.where = function (attrs, first) {
     if (_.isEmpty(attrs)) return first ? void 0 : [];
-    return this[first ? 'find' : 'filter'](function(model) {
+    return this[first ? 'find' : 'filter'](function (model) {
         var value;
         for (var key in attrs) {
             value = model.get ? model.get(key) : model[key];
@@ -52,12 +52,12 @@ mixins.where = function(attrs, first) {
 
 // Return the first model with matching attributes. Useful for simple cases
 // of `find`.
-mixins.findWhere = function(attrs) {
+mixins.findWhere = function (attrs) {
     return this.where(attrs, true);
 };
 
 // Plucks an attribute from each model in the collection.
-mixins.pluck = function(attr) {
+mixins.pluck = function (attr) {
     return _.invoke(this.models, 'get', attr);
 };
 
