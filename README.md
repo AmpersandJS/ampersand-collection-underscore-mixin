@@ -3,7 +3,7 @@
 A mixin for extending ampersand-collection with underscore methods.
 
 ### Deprecation Notice
-As of [`v4.0.0`](https://github.com/AmpersandJS/ampersand-rest-collection/pull/23) this is no longer mixed in to `ampersand-rest-collection`. Instead it uses [`ampersand-collection-lodash-mixin`](https://www.npmjs.com/package/ampersand-collection-lodash-mixin) to match all the other core modules which use lodash over underscore. We no longer recommend using this module individually, and if you are we recommend converting to the lodash mixin.
+As of [`v4.0.0`](https://github.com/AmpersandJS/ampersand-rest-collection/pull/23) this is no longer mixed in to `ampersand-rest-collection`. Instead it uses [`ampersand-collection-lodash-mixin`](https://www.npmjs.com/package/ampersand-collection-lodash-mixin) to match all other core module's move to using lodash. We no longer recommend using this module individually, and if you are we recommend converting to the lodash mixin.
 
 ## install
 
