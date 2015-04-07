@@ -2,9 +2,8 @@
 
 A mixin for extending ampersand-collection with underscore methods.
 
-If you're using an [ampersand-rest-collection](http://ampersandjs.com/docs/#ampersand-rest-collection) this is already mixed in for you.
-
-Out of the box, ampersand-collections proxy the [ES5 iteration methods already](http://ampersandjs.com/docs/#ampersand-collection-proxied-es5-array-methods-9) so you don't _have_ to use this mixin, but if you want all the underscore methods, or better browser support, you can use this.
+### Deprecation Notice
+As of [`v4.0.0`](https://github.com/AmpersandJS/ampersand-rest-collection/pull/23) this is no longer mixed in to `ampersand-rest-collection`. Instead it uses [`ampersand-collection-lodash-mixin`](https://www.npmjs.com/package/ampersand-collection-lodash-mixin) to match all other core module's move to using lodash. We no longer recommend using this module individually, and if you are we recommend converting to the lodash mixin.
 
 ## install
 
