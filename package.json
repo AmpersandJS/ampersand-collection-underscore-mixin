@@ -3,6 +3,11 @@
   "description": "A mixin for extending ampersand-collection with underscore methods.",
   "version": "1.0.4",
   "author": "Henrik Joreteg <henrik@andyet.net>",
+  "browserify": {
+    "transform": [
+      "ampersand-version"
+    ]
+  },
   "bugs": {
     "url": "https://github.com/ampersandjs/ampersand-collection-underscore-mixin/issues"
   },
