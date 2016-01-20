@@ -3,11 +3,6 @@
   "description": "A mixin for extending ampersand-collection with underscore methods.",
   "version": "1.0.4",
   "author": "Henrik Joreteg <henrik@andyet.net>",
-  "browserify": {
-    "transform": [
-      "ampersand-version"
-    ]
-  },
   "bugs": {
     "url": "https://github.com/ampersandjs/ampersand-collection-underscore-mixin/issues"
   },
@@ -18,14 +13,11 @@
   "devDependencies": {
     "ampersand-collection": "^1.0.0",
     "ampersand-state": "^4.3.2",
-    "browserify": "^5.11.0",
     "jshint": "^2.5.5",
-    "phantomjs": "^1.9.7-15",
+    "phantomjs": "^1.9.19",
     "precommit-hook": "^1.0.7",
-    "run-browser": "~1.2.0",
-    "tap-spec": "^0.2.1",
-    "tape": "~2.12.1",
-    "tape-run": "^0.3.0"
+    "tape": "^4.4.0",
+    "zuul": "^3.9.0"
   },
   "homepage": "https://github.com/ampersandjs/ampersand-collection-underscore-mixin",
   "keywords": [
@@ -40,24 +32,13 @@
     "url": "git://github.com/ampersandjs/ampersand-collection-underscore-mixin"
   },
   "scripts": {
-    "test": "browserify test/index.js | tape-run | tap-spec",
-    "validate": "jshint .",
-    "start": "run-browser test/index.js"
+    "start": "zuul --local -- test/index.js",
+    "test": "zuul --phantom -- test/index.js",
+    "test-ci": "zuul -- test/index.js",
+    "lint": "jshint ."
   },
-  "testling": {
-    "files": "test/*.js",
-    "browsers": [
-      "ie/9..latest",
-      "firefox/17..latest",
-      "firefox/nightly",
-      "chrome/22..latest",
-      "chrome/canary",
-      "opera/12..latest",
-      "opera/next",
-      "safari/5.1..latest",
-      "ipad/6.0..latest",
-      "iphone/6.0..latest",
-      "android-browser/4.2..latest"
-    ]
-  }
+  "precommit": [
+    "lint",
+    "test"
+  ]
 }
